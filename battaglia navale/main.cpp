@@ -21,7 +21,7 @@ const int MAIN_FG = 0;
 const int INPUT_FG = 15;
 const int INFO_FG = 5;
 const int ERROR_FG = 4;
-
+const int qcaselle_navi = 50;
 bool maxaltezza = true;
 bool minaltezza = false;
 bool uscire = false;
@@ -29,6 +29,12 @@ bool uscire = false;
 int c;
 int i = 9;
 int z = 0;
+int Portaerei = 2;           //5 caselle di lunghezza
+int Corazzate = 3;           //4 caselle di lunghezza
+int Sottomarini = 4;         //3 caselle di lunghezza
+int Cacciatorpediniere = 5;  //2 caselle di lunghezza
+int Pattugliatori =  6;      //1 caselle di lunghezza
+int totnavi = 20;            //50 caselle di lunghezza
 
 void displayMainLayout();
 void INIZIO();
@@ -64,10 +70,13 @@ void displayMainLayout()
     displayToday();
     gotoXY(0, 1);
     cout << "================================================================================";
-    if (z == 0){
+    if (z == 0)
+    {
         gotoXY(31, i);
         cout << ">";
-    }else{
+    }
+    else
+    {
         gotoXY(31,z);
         cout <<" ";
         gotoXY(31,i);
@@ -134,17 +143,19 @@ void displayMainLayout()
         i +=1 ;
         maxaltezza = false;
     }
-    if (c == ENTER){
-        switch (i){
-            case 9:
-                INIZIO();
-                break;
-            case 10:
-                Gnavi();
-                break;
-            case 11:
-                uscire = true;
-                break;
+    if (c == ENTER)
+    {
+        switch (i)
+        {
+        case 9:
+            INIZIO();
+            break;
+        case 10:
+            Gnavi();
+            break;
+        case 11:
+            uscire = true;
+            break;
         }
     }
     if (c == ESC)
@@ -155,17 +166,18 @@ void displayMainLayout()
 
 void INIZIO ()
 {
-    SetConsoleOutputCP(CP_UTF8);
-    SetConsoleCP(CP_UTF8);
     clearScreen(MAIN_BG, MAIN_FG);
     system("color BF");
     stampacaselle();
+
     Sleep(10000);
 
 }
 
 void stampacaselle()
 {
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
     cout << R"(
       1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30
     ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
@@ -199,11 +211,76 @@ void stampacaselle()
   J │   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   │
     └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘
 )";
+    cout <<endl;
 }
 
 void Gnavi()
 {
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    system ("cls");
+    bool esc = false;
+    i = 11;
+    z = 11;
+    while(!esc){
+        gotoXY (0 ,0);
+        cout << R"(
+┌───────────────────────────────────┐
+│ Le navi sono:                     │
+│ -2 Portaerei          (5 caselle) │
+│ -3 Corazzate          (4 caselle) │
+│ -4 Sottomarini        (3 caselle) │
+│ -5 Cacciatorpediniere (2 caselle) │
+│ -6 Pattugliatori      (1 caselle) │
+└───────────────────────────────────┘
+)";
+        cout<<endl;
+        gotoXY(0,10);
+        cout << "vuoi cambirle" <<endl;
+            gotoXY(0 ,z);
+            cout << " ";
+            gotoXY(0 ,i);
+            cout << ">";
+        if (i == 11){
+            SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            gotoXY(1,11);
+            cout << " SI"<<endl;
+            maxaltezza = true;
+            SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+        }else{
+            gotoXY(1,11);
+            cout << " SI"<<endl;
+        }
+        if(i == 12){
+            SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            gotoXY(1,12);
+            cout << " No"<<endl;
+            minaltezza = true;
+            SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+        }else{
+            gotoXY(1,12);
+            cout << " No"<<endl;
+        }
+        z = i;
+        c = _getch();
+        if (c == SU && !maxaltezza){
+            i -= 1;
+            minaltezza = false;
+        }else if (c == GIU && !minaltezza){
+            i += 1;
+            maxaltezza = false;
+        }else if (c == ENTER){
+            switch (i){
+            case 11:
 
+                break;
+            case 12:
+                system ("cls");
+                esc = true;
+                break;
+            }
+        }
+    }
 }
 
 void USCITA ()
