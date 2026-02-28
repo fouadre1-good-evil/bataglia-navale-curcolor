@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1772273176 source:c:\users\phaser\downloads\adadadada\main.cpp
+	<iostream>
+	<conio.h>
+	"curcolor.h"
+	<ctime>
+	<cstdlib>
+
+1772267643 c:\users\phaser\downloads\adadadada\curcolor.h
+	<iostream>
+	<windows.h>
+	<time.h>
+	<iomanip>
+	<string.h>
+
