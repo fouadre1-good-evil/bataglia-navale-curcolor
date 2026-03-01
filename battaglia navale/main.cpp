@@ -31,18 +31,32 @@ bool scelta;
 int c;
 int i = 9;
 int z = 0;
-int Portaerei = 2;           //5 caselle di lunghezza
-int Corazzate = 3;           //4 caselle di lunghezza
-int Sottomarini = 4;         //3 caselle di lunghezza
-int Cacciatorpediniere = 5;  //2 caselle di lunghezza
-int Pattugliatori =  6;      //1 casella di lunghezza
+int Portaerei = 2;           //5 caselle di lunghezza  (nella matrice = 1)
+int Corazzate = 3;           //4 caselle di lunghezza  (nella matrice = 2)
+int Sottomarini = 4;         //3 caselle di lunghezza  (nella matrice = 3)
+int Cacciatorpediniere = 5;  //2 caselle di lunghezza  (nella matrice = 4)
+int Pattugliatori =  6;      //1 casella di lunghezza  (nella matrice = 5)
 int totcaselle = 50;         //50 caselle di lunghezza
+
+int mappaP1[10][30];
+int mappaP2[10][30];
+int mappaPC[10][30] = {{0,0,0,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0},
+                       {0,2,0,0,0,0,0,0,0,1,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                       {0,2,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,1,0,0},
+                       {0,2,0,0,0,0,0,0,0,1,0,0,0,3,3,3,0,0,2,0,0,0,0,4,0,0,0,1,0,0},
+                       {0,2,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,1,0,0},
+                       {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,0,0,0,3,0,0,0,0,1,0,0},
+                       {0,0,4,0,0,4,4,0,0,0,0,0,0,5,0,0,0,0,2,0,0,0,3,0,0,5,0,1,0,0},
+                       {0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0},
+                       {0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                       {5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,4,4,0,0,0,5,0}};
 
 void displayMainLayout();
 void INIZIO();
 void P_PC();
 void stampacaselle();
-void Gnavi(int &Portaerei,int &Corazzate,int &Sottomarini,int &Cacciatorpediniere,int &Pattugliatori);
+void Gnavi();
+void Classifica();
 void USCITA();
 void hideCursor();
 
@@ -68,69 +82,81 @@ int main()
 void displayMainLayout()
 {
     setColor(MAIN_BG, MAIN_FG);
-    gotoXY(0, 0);
+    gotoXY(0 ,0);
     cout << "Battaglia navale                                           - Data: ";
     displayToday();
-    gotoXY(0, 1);
+    gotoXY(0 ,1);
     cout << "================================================================================";
     if (z == 0)
     {
-        gotoXY(31, i);
+        gotoXY(31 ,i);
         cout << ">";
     }
     else
     {
-        gotoXY(31,z);
+        gotoXY(31 ,z);
         cout <<" ";
-        gotoXY(31,i);
+        gotoXY(31 ,i);
         cout <<">";
     }
-    if(i == 9)
+    if (i == 9)
     {
         SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-        gotoXY(32, 9);
+        gotoXY(32 ,9);
         cout << "Inizia";
         SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
     }
     else
     {
-        gotoXY(32, 9);
+        gotoXY(32 ,9);
         cout << "Inizia";
     }
-    if(i == 10)
+    if (i == 10)
     {
         SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-        gotoXY(32, 10);
+        gotoXY(32 ,10);
         cout << "Gestione navi";
         SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
     }
     else
     {
-        gotoXY(32, 10);
+        gotoXY(32 ,10);
         cout << "Gestione navi";
     }
-    if(i == 11)
+    if (i == 11)
     {
         SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-        gotoXY(32, 11);
+        gotoXY(32 ,11);
+        cout << "Classifica";
+        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+    }
+    else
+    {
+        gotoXY(32 ,11);
+        cout << "Classifica";
+    }
+    if (i == 12)
+    {
+        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+        gotoXY(32 ,12);
         cout << "Esci";
         SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
     }
     else
     {
-        gotoXY(32, 11);
+        gotoXY(32 ,12);
         cout << "Esci";
     }
-    gotoXY(0,20);
+    gotoXY(0 ,20);
     cout << "Premere ESC per uscire dal programma";
-    gotoXY(0, 21);
+    gotoXY(0 ,21);
     cout << "================================================================================";
     c = _getch();
     if (i == 9)
     {
         maxaltezza = true;
     }
-    else if (i == 11)
+    else if (i == 12)
     {
         minaltezza = true;
     }
@@ -154,9 +180,12 @@ void displayMainLayout()
             INIZIO();
             break;
         case 10:
-            Gnavi(Portaerei,Corazzate,Sottomarini,Cacciatorpediniere,Pattugliatori);
+            Gnavi();
             break;
         case 11:
+            Classifica();
+            break;
+        case 12:
             uscire = true;
             break;
         }
@@ -175,7 +204,7 @@ void INIZIO ()
     if (!uscire)
     {
         stampacaselle();
-        Sleep(10000);
+        Sleep(30000);
     }
 }
 
@@ -184,35 +213,51 @@ void P_PC ()
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
     int i = 1,z = 1;
-    while (!uscire)
+    bool v = false;
+    while (!uscire && !v)
     {
         gotoXY(1,0);
         cout << "┌─────────────────┐" <<endl;
-        if ( i == 1 ){
+        if ( i == 1 )
+        {
             SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-            gotoXY(1 ,1);
+            gotoXY(1,1);
             cout << "│-2 Player";
             SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
             cout << "        │" <<endl;
         }
         else
         {
-            gotoXY(1 ,1);
+            gotoXY(1,1);
             cout << "│-2 Player        │" <<endl;
         }
-        if (i == 2){
+        if (i == 2)
+        {
             SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-            gotoXY(1 ,2);
-            cout << "│- VS PC";
+            gotoXY(1,2);
+            cout << "│-VS PC";
             SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-            cout << "          │" <<endl;
+            cout << "           │" <<endl;
         }
         else
         {
-            gotoXY(1 ,2);
-            cout << "│- VS PC          │" <<endl;
+            gotoXY(1,2);
+            cout << "│-VS PC           │" <<endl;
         }
-        gotoXY(1,3);
+        if (i == 3)
+        {
+            SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            gotoXY(1 ,3);
+            cout << "│-ESC per uscire";
+            SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            cout << "  │"<<endl;
+        }
+        else
+        {
+            gotoXY(1 ,3);
+            cout << "│-ESC per uscire  │" <<endl;
+        }
+        gotoXY(1,4);
         cout << "└─────────────────┘" <<endl;
         gotoXY(0,z);
         cout << " ";
@@ -223,7 +268,7 @@ void P_PC ()
         {
             maxaltezza = true;
         }
-        else if (i == 2)
+        else if (i == 3)
         {
             minaltezza = true;
         }
@@ -239,6 +284,27 @@ void P_PC ()
             z = i;
             i += 1;
         }
+        if (c == ENTER)
+        {
+            switch (i)
+            {
+                case 1:
+                    scelta = false;
+                    v = true;
+                    break;
+                case 2:
+                    scelta = true;
+                    v = true;
+                    break;
+                case 3:
+                    uscire = true;
+                    break;
+            }
+        }
+        if (c == ESC)
+        {
+            uscire = true;
+        }
     }
 }
 
@@ -247,7 +313,6 @@ void stampacaselle()
     clearScreen(MAIN_BG, MAIN_FG);
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
-
     cout << R"(
       1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30
     ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
@@ -284,7 +349,7 @@ void stampacaselle()
     cout <<endl;
 }
 
-void Gnavi(int &Portaerei ,int &Corazzate ,int &Sottomarini ,int &Cacciatorpediniere ,int &Pattugliatori)
+void Gnavi()
 {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
@@ -533,6 +598,11 @@ rinizio:
             }
         }
     }
+}
+
+void Classifica()
+{
+
 }
 
 void USCITA ()
