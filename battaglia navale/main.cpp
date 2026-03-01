@@ -22,9 +22,11 @@ const int INPUT_FG = 15;
 const int INFO_FG = 5;
 const int ERROR_FG = 4;
 const int qcaselle_navi = 50;
+
 bool maxaltezza = true;
 bool minaltezza = false;
 bool uscire = false;
+bool scelta;
 
 int c;
 int i = 9;
@@ -38,8 +40,9 @@ int totcaselle = 50;         //50 caselle di lunghezza
 
 void displayMainLayout();
 void INIZIO();
+void P_PC();
 void stampacaselle();
-void Gnavi(int &Portaerei ,int &Corazzate ,int &Sottomarini ,int &Cacciatorpediniere ,int &Pattugliatori);
+void Gnavi(int &Portaerei,int &Corazzate,int &Sottomarini,int &Cacciatorpediniere,int &Pattugliatori);
 void USCITA();
 void hideCursor();
 
@@ -151,7 +154,7 @@ void displayMainLayout()
             INIZIO();
             break;
         case 10:
-            Gnavi(Portaerei ,Corazzate ,Sottomarini ,Cacciatorpediniere ,Pattugliatori);
+            Gnavi(Portaerei,Corazzate,Sottomarini,Cacciatorpediniere,Pattugliatori);
             break;
         case 11:
             uscire = true;
@@ -167,17 +170,84 @@ void displayMainLayout()
 void INIZIO ()
 {
     clearScreen(MAIN_BG, MAIN_FG);
-    system("color BF");
-    stampacaselle();
+    system("color B0");
+    P_PC();
+    if (!uscire)
+    {
+        stampacaselle();
+        Sleep(10000);
+    }
+}
 
-    Sleep(10000);
-
+void P_PC ()
+{
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    int i = 1,z = 1;
+    while (!uscire)
+    {
+        gotoXY(1,0);
+        cout << "┌─────────────────┐" <<endl;
+        if ( i == 1 ){
+            SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            gotoXY(1 ,1);
+            cout << "│-2 Player";
+            SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            cout << "        │" <<endl;
+        }
+        else
+        {
+            gotoXY(1 ,1);
+            cout << "│-2 Player        │" <<endl;
+        }
+        if (i == 2){
+            SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            gotoXY(1 ,2);
+            cout << "│- VS PC";
+            SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            cout << "          │" <<endl;
+        }
+        else
+        {
+            gotoXY(1 ,2);
+            cout << "│- VS PC          │" <<endl;
+        }
+        gotoXY(1,3);
+        cout << "└─────────────────┘" <<endl;
+        gotoXY(0,z);
+        cout << " ";
+        gotoXY(0,i);
+        cout << ">";
+        c = _getch();
+        if (i == 1)
+        {
+            maxaltezza = true;
+        }
+        else if (i == 2)
+        {
+            minaltezza = true;
+        }
+        if (c == SU && maxaltezza == false)
+        {
+            minaltezza = false;
+            z = i;
+            i -= 1;
+        }
+        else if (c== GIU && minaltezza == false)
+        {
+            maxaltezza = false;
+            z = i;
+            i += 1;
+        }
+    }
 }
 
 void stampacaselle()
 {
+    clearScreen(MAIN_BG, MAIN_FG);
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
+
     cout << R"(
       1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30
     ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
@@ -224,61 +294,113 @@ void Gnavi(int &Portaerei ,int &Corazzate ,int &Sottomarini ,int &Cacciatorpedin
     z = 9;
     while(!esc){
         gotoXY (0 ,0);
-        cout << "┌───────────────────────────────────┐"<<endl;
+        cout << "┌────────────────────────────────────┐"<<endl;
         gotoXY (0 ,1);
-        cout << "│ Le navi sono:                     │"<<endl;
+        cout << "│ Le navi sono:                      │"<<endl;
         gotoXY (0 ,2);
-        cout << "│ -";if (Portaerei >= 10) {cout << Portaerei << " "<<" Portaerei          (5 caselle) │"<<endl;}else{cout << Portaerei <<" Portaerei          (5 caselle) │"<<endl;}
+        cout << "│ -";
+        if (Portaerei >= 10) {
+            cout << Portaerei << " Portaerei          (5 caselle) │" <<endl;
+        }
+        else
+        {
+            cout << Portaerei << " Portaerei           (5 caselle) │" <<endl;
+        }
         gotoXY (0 ,3);
-        cout <<"│ -";if (Corazzate >= 10) {cout << Corazzate << " "<<" Corazzate          (4 caselle) │"<<endl;}else{cout << Corazzate <<" Corazzate          (4 caselle) │"<<endl;}
+        cout << "│ -";
+        if (Corazzate >= 10)
+        {
+            cout << Corazzate << " Corazzate          (4 caselle) │" <<endl;
+        }
+        else
+        {
+            cout << Corazzate << " Corazzate           (4 caselle) │" <<endl;
+        }
         gotoXY (0 ,4);
-        cout <<"│ -";if (Sottomarini >= 10) {cout << Sottomarini << " "<<" I │"<<endl;}else{cout << Sottomarini <<" Sottomarini        (3 caselle) │"<<endl;}
-        gotoXY (0 ,5);
-        cout <<"│ -";if (Cacciatorpediniere >= 10) {cout << Cacciatorpediniere << " "<<" Cacciatorpediniere (2 caselle) │"<<endl;}else{cout << Cacciatorpediniere <<" Cacciatorpediniere (2 caselle) │"<<endl;}
-        gotoXY (0 ,6);
-        cout <<"│ -";if (Pattugliatori >= 10) {cout << Sottomarini << " "<<" Pattugliatori      (1 casella) │"<<endl;}else{cout << Sottomarini <<" Pattugliatori      (1 casella) │"<<endl;}
-        gotoXY (0 ,7);
-        cout <<"└───────────────────────────────────┘"<<endl;
+        cout << "│ -";
+        if (Sottomarini >= 10)
+        {
+            cout << Sottomarini << " Sottomarini        (3 caselle) │" <<endl;
+        }
+        else
+        {
+            cout << Sottomarini << " Sottomarini         (3 caselle) │" <<endl;
+        }
+        gotoXY (0,5);
+        cout << "│ -";
+        if (Cacciatorpediniere >= 10)
+        {
+            cout << Cacciatorpediniere << " Cacciatorpediniere (2 caselle) │" <<endl;
+        }
+        else
+        {
+            cout << Cacciatorpediniere << " Cacciatorpediniere  (2 caselle) │" <<endl;
+        }
+        gotoXY (0,6);
+        cout << "│ -";
+        if (Pattugliatori >= 10)
+        {
+            cout << Pattugliatori << " Pattugliatori     (1 casella)  │" <<endl;
+        }
+        else
+        {
+            cout << Pattugliatori << " Pattugliatori       (1 casella) │ "<<endl;
+        }
+        gotoXY (0,7);
+        cout << "└────────────────────────────────────┘" <<endl;
         gotoXY(0,8);
-        cout << "vuoi cambirle" <<endl;
-            gotoXY(0 ,z);
-            cout << " ";
-            gotoXY(0 ,i);
-            cout << ">";
-        if (i == 9){
+        cout << "vuoi cambiarle" <<endl;
+        gotoXY(0,z);
+        cout << " ";
+        gotoXY(0,i);
+        cout << ">";
+        if (i == 9)
+        {
             SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
             gotoXY(1,9);
             cout << " SI"<<endl;
             maxaltezza = true;
             SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-        }else{
+        }
+        else
+        {
             gotoXY(1,9);
             cout << " SI"<<endl;
         }
-        if(i == 10){
+        if(i == 10)
+        {
             SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
             gotoXY(1,10);
             cout << " No"<<endl;
             minaltezza = true;
             SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-        }else{
+        }
+        else
+        {
             gotoXY(1,10);
             cout << " No"<<endl;
         }
         z = i;
         c = _getch();
-        if (c == SU && !maxaltezza){
+        if (c == SU && !maxaltezza)
+        {
             i -= 1;
             minaltezza = false;
-        }else if (c == GIU && !minaltezza){
+        }
+        else if (c == GIU && !minaltezza)
+        {
             i += 1;
             maxaltezza = false;
-        }else if (c == ENTER){
-            switch (i){
+        }
+        else if (c == ENTER)
+        {
+            switch (i)
+            {
             case 9:
                 totcaselle = 0;
-                while (totcaselle <=50){
-                    rinizio:
+                while (totcaselle <=50)
+                {
+rinizio:
                     Portaerei = 2;
                     Corazzate = 3;
                     Sottomarini = 4;
@@ -297,12 +419,19 @@ void Gnavi(int &Portaerei ,int &Corazzate ,int &Sottomarini ,int &Cacciatorpedin
                     cout << "Quanti portaeri si vuole mettere" <<endl;
                     cin >> Portaerei;
                     totcaselle += (Portaerei*5);
-                    if (totcaselle == 50){
+                    if (totcaselle == 50)
+                    {
+                        Corazzate = 0;
+                        Sottomarini = 0;
+                        Cacciatorpediniere = 0;
+                        Pattugliatori = 0;
                         cout << "E' stato raggiunto il massimo di caselle (50)";
                         Sleep(2000);
                         system("cls");
                         break;
-                    }else if (totcaselle > 50){
+                    }
+                    else if (totcaselle > 50)
+                    {
                         system("cls");
                         cout << "E' stato superato  il limite di caselle (50)" <<endl;
                         cout << "Riprovare";
@@ -311,13 +440,19 @@ void Gnavi(int &Portaerei ,int &Corazzate ,int &Sottomarini ,int &Cacciatorpedin
                     }
                     cout << "Quanti Corazzate si vuole mettere (sono rimaste " << 50-totcaselle << " caselle)"<<endl;
                     cin >> Corazzate;
-                    totcaselle += (Corazzate*4);
-                    if (totcaselle == 50){
+                    totcaselle += (Corazzate * 4);
+                    if (totcaselle == 50)
+                    {
+                        Sottomarini = 0;
+                        Cacciatorpediniere = 0;
+                        Pattugliatori = 0;
                         cout << "E' stato raggiunto il massimo di caselle (50)";
                         Sleep(2000);
                         system("cls");
                         break;
-                    }else if (totcaselle > 50){
+                    }
+                    else if (totcaselle > 50)
+                    {
                         system("cls");
                         cout << "E' stato superato  il limite di caselle (50)" <<endl;
                         cout << "Riprovare";
@@ -326,12 +461,18 @@ void Gnavi(int &Portaerei ,int &Corazzate ,int &Sottomarini ,int &Cacciatorpedin
                     }
                     cout << "Quanti Sottomarini si vuole mettere (sono rimaste " << 50 - totcaselle << " caselle)"<<endl;
                     cin >>Sottomarini;
-                    if (totcaselle == 50){
+                    totcaselle += (Sottomarini * 3);
+                    if (totcaselle == 50)
+                    {
+                        Cacciatorpediniere = 0;
+                        Pattugliatori = 0;
                         cout << "E' stato raggiunto il massimo di caselle (50)";
                         Sleep(2000);
                         system("cls");
                         break;
-                    }else if (totcaselle > 50){
+                    }
+                    else if (totcaselle > 50)
+                    {
                         system("cls");
                         cout << "E' stato superato  il limite di caselle (50)" <<endl;
                         cout << "Riprovare";
@@ -340,12 +481,17 @@ void Gnavi(int &Portaerei ,int &Corazzate ,int &Sottomarini ,int &Cacciatorpedin
                     }
                     cout << "Quanti Cacciatorpediniere si vuole mettere (sono rimaste " << 50 - totcaselle << " caselle)"<<endl;
                     cin >>Cacciatorpediniere;
-                    if (totcaselle == 50){
+                    totcaselle += (Cacciatorpediniere * 2);
+                    if (totcaselle == 50)
+                    {
+                        Pattugliatori = 0;
                         cout << "E' stato raggiunto il massimo di caselle (50)";
                         Sleep(2000);
                         system("cls");
                         break;
-                    }else if (totcaselle > 50){
+                    }
+                    else if (totcaselle > 50)
+                    {
                         system("cls");
                         cout << "E' stato superato  il limite di caselle (50)" <<endl;
                         cout << "Riprovare";
@@ -354,19 +500,24 @@ void Gnavi(int &Portaerei ,int &Corazzate ,int &Sottomarini ,int &Cacciatorpedin
                     }
                     cout << "Quanti Pattugliatori si vuole mettee (sono rimaste " << 50 - totcaselle << " caselle)"<<endl;
                     cin >>Pattugliatori;
-                    if (totcaselle == 50){
+                    totcaselle += (Pattugliatori * 1);
+                    if (totcaselle == 50)
+                    {
                         cout << "E' stato raggiunto il massimo di caselle (50)";
                         Sleep(2000);
                         system("cls");
                         break;
-                    }else if (totcaselle > 50){
+                    }
+                    else if (totcaselle > 50)
+                    {
                         system("cls");
                         cout << "E' stato superato  il limite di caselle (50)" <<endl;
                         cout << "Riprovare";
                         Sleep(2000);
                         goto rinizio;
                     }
-                    if(totcaselle != 50){
+                    if(totcaselle != 50)
+                    {
                         system ("cls");
                         cout << "Sono state usate un totale di " << totcaselle << " e rimangono " << 50 - totcaselle << " da usare si prega di usarle tutte" <<endl;
                         cout << "Riprovare";
