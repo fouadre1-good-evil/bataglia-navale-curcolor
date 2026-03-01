@@ -203,8 +203,18 @@ void INIZIO ()
     P_PC();
     if (!uscire)
     {
-        stampacaselle();
-        Sleep(30000);
+        while (!uscire){
+            stampacaselle();
+            if (!scelta)  //2Player
+            {
+
+            }
+            else          //PC
+            {
+
+            }
+            Sleep(30000);
+        }
     }
 }
 
