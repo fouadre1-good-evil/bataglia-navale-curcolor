@@ -37,3 +37,19 @@
 	<io.h>
 	<fcntl.h>
 
+1772714697 source:c:\users\fouad\documents\batallia navale\bataglia-navale-curcolor-main\bataglia-navale-curcolor-main\battaglia navale\main.cpp
+	<iostream>
+	<conio.h>
+	"curcolor.h"
+	<ctime>
+	<cstdlib>
+	<io.h>
+	<fcntl.h>
+
+1772566243 c:\users\fouad\documents\batallia navale\bataglia-navale-curcolor-main\bataglia-navale-curcolor-main\battaglia navale\curcolor.h
+	<iostream>
+	<windows.h>
+	<time.h>
+	<iomanip>
+	<string.h>
+

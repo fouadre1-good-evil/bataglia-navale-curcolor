@@ -41,15 +41,16 @@ int totcaselle = 50;         //50 caselle di lunghezza
 int mappaP1[10][30];
 int mappaP2[10][30];
 int mappaPC[10][30] = {{0,0,0,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0},
-                       {0,2,0,0,0,0,0,0,0,1,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                       {0,2,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,1,0,0},
-                       {0,2,0,0,0,0,0,0,0,1,0,0,0,3,3,3,0,0,2,0,0,0,0,4,0,0,0,1,0,0},
-                       {0,2,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,1,0,0},
-                       {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,0,0,0,3,0,0,0,0,1,0,0},
-                       {0,0,4,0,0,4,4,0,0,0,0,0,0,5,0,0,0,0,2,0,0,0,3,0,0,5,0,1,0,0},
-                       {0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0},
-                       {0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                       {5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,4,4,0,0,0,5,0}};
+    {0,2,0,0,0,0,0,0,0,1,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,2,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,1,0,0},
+    {0,2,0,0,0,0,0,0,0,1,0,0,0,3,3,3,0,0,2,0,0,0,0,4,0,0,0,1,0,0},
+    {0,2,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,1,0,0},
+    {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,0,0,0,3,0,0,0,0,1,0,0},
+    {0,0,4,0,0,4,4,0,0,0,0,0,0,5,0,0,0,0,2,0,0,0,3,0,0,5,0,1,0,0},
+    {0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0},
+    {0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,4,4,0,0,0,5,0}
+};
 
 void displayMainLayout();
 void INIZIO();
@@ -82,74 +83,74 @@ int main()
 void displayMainLayout()
 {
     setColor(MAIN_BG, MAIN_FG);
-    gotoXY(0 ,0);
+    gotoXY(0,0);
     cout << "Battaglia navale                                           - Data: ";
     displayToday();
-    gotoXY(0 ,1);
+    gotoXY(0,1);
     cout << "================================================================================";
     if (z == 0)
     {
-        gotoXY(31 ,i);
+        gotoXY(31,i);
         cout << ">";
     }
     else
     {
-        gotoXY(31 ,z);
+        gotoXY(31,z);
         cout <<" ";
-        gotoXY(31 ,i);
+        gotoXY(31,i);
         cout <<">";
     }
     if (i == 9)
     {
         SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-        gotoXY(32 ,9);
+        gotoXY(32,9);
         cout << "Inizia";
         SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
     }
     else
     {
-        gotoXY(32 ,9);
+        gotoXY(32,9);
         cout << "Inizia";
     }
     if (i == 10)
     {
         SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-        gotoXY(32 ,10);
+        gotoXY(32,10);
         cout << "Gestione navi";
         SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
     }
     else
     {
-        gotoXY(32 ,10);
+        gotoXY(32,10);
         cout << "Gestione navi";
     }
     if (i == 11)
     {
         SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-        gotoXY(32 ,11);
+        gotoXY(32,11);
         cout << "Classifica";
         SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
     }
     else
     {
-        gotoXY(32 ,11);
+        gotoXY(32,11);
         cout << "Classifica";
     }
     if (i == 12)
     {
         SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-        gotoXY(32 ,12);
+        gotoXY(32,12);
         cout << "Esci";
         SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
     }
     else
     {
-        gotoXY(32 ,12);
+        gotoXY(32,12);
         cout << "Esci";
     }
-    gotoXY(0 ,20);
+    gotoXY(0,20);
     cout << "Premere ESC per uscire dal programma";
-    gotoXY(0 ,21);
+    gotoXY(0,21);
     cout << "================================================================================";
     c = _getch();
     if (i == 9)
@@ -203,7 +204,8 @@ void INIZIO ()
     P_PC();
     if (!uscire)
     {
-        while (!uscire){
+        while (!uscire)
+        {
             stampacaselle();
             if (!scelta)  //2Player
             {
@@ -257,14 +259,14 @@ void P_PC ()
         if (i == 3)
         {
             SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-            gotoXY(1 ,3);
+            gotoXY(1,3);
             cout << "│-ESC per uscire";
             SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
             cout << "  │"<<endl;
         }
         else
         {
-            gotoXY(1 ,3);
+            gotoXY(1,3);
             cout << "│-ESC per uscire  │" <<endl;
         }
         gotoXY(1,4);
@@ -298,17 +300,17 @@ void P_PC ()
         {
             switch (i)
             {
-                case 1:
-                    scelta = false;
-                    v = true;
-                    break;
-                case 2:
-                    scelta = true;
-                    v = true;
-                    break;
-                case 3:
-                    uscire = true;
-                    break;
+            case 1:
+                scelta = false;
+                v = true;
+                break;
+            case 2:
+                scelta = true;
+                v = true;
+                break;
+            case 3:
+                uscire = true;
+                break;
             }
         }
         if (c == ESC)
@@ -363,10 +365,19 @@ void Gnavi()
 {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
-    system ("cls");
+    clearScreen(MAIN_BG, MAIN_FG);
+
+    int PortaereiP = 0;
+    int CorazzateP = 0;
+    int SottomariniP = 0;
+    int CacciatorpediniereP = 0;
+    int PattugliatoriP = 0;
+
     bool esc = false;
+
     i = 9;
     z = 9;
+
     while(!esc){
         gotoXY (0 ,0);
         cout << "┌────────────────────────────────────┐"<<endl;
@@ -472,144 +483,479 @@ void Gnavi()
             switch (i)
             {
             case 9:
-                totcaselle = 0;
-                while (totcaselle <=50)
+                i = 3;
+                totcaselle = 50;
+                PortaereiP = Portaerei;
+                CorazzateP = Corazzate;
+                SottomariniP = Sottomarini;
+                CacciatorpediniereP = Cacciatorpediniere;
+                PattugliatoriP = Pattugliatori;
+                clearScreen(MAIN_BG, MAIN_FG);
+                while (true)
                 {
-rinizio:
-                    Portaerei = 2;
-                    Corazzate = 3;
-                    Sottomarini = 4;
-                    Cacciatorpediniere = 5;
-                    Pattugliatori = 6;
-                    totcaselle = 0;
-                    system("cls");
-                    cout << "┌────────────────────────────────────────┐" <<endl;
-                    cout << "│ Il numero di caselle disponibili e' 50 │" <<endl;
-                    cout << "│ I Portaerei valgono 5 caselle          │" <<endl;
-                    cout << "│ Le Corazzate valgono 4 caselle         │" <<endl;
-                    cout << "│ I Sottomarini valgono 3 caselle        │" <<endl;
-                    cout << "│ IL Cacciatorpediniere vale 2 caselle   │" <<endl;
-                    cout << "│ I Pattugliatori valgono 1 casella      │" <<endl;
-                    cout << "└────────────────────────────────────────┘" <<endl;
-                    cout << "Quanti portaeri si vuole mettere" <<endl;
-                    cin >> Portaerei;
-                    totcaselle += (Portaerei*5);
-                    if (totcaselle == 50)
-                    {
-                        Corazzate = 0;
-                        Sottomarini = 0;
-                        Cacciatorpediniere = 0;
-                        Pattugliatori = 0;
-                        cout << "E' stato raggiunto il massimo di caselle (50)";
-                        Sleep(2000);
-                        system("cls");
+                    if (i == 2){
+                        gotoXY(1 ,1);
+                        cout << "│ ";
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        cout << "Il numero di caselle int utilizzo e'--->";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        cout << "│";
+                    }else{
+                        gotoXY(1 ,1);
+                        cout << "│ Il numero di caselle in utilizzo e'--->│";
+                    }
+                    if (i == 3){
+                        gotoXY(1 ,3);
+                        cout << "│ ";
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        cout << "I Portaerei valgono 5 caselle";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        cout << "          │";
+                    }else{
+                        gotoXY(1 ,3);
+                        cout << "│ I Portaerei valgono 5 caselle          │";
+                    }
+                    if (i == 5){
+                        gotoXY(1 ,5);
+                        cout << "│ ";
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        cout << "Le Corazzate valgono 4 caselle";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        cout << "         │";
+                    }else{
+                        gotoXY(1 ,5);
+                        cout << "│ Le Corazzate valgono 4 caselle         │";
+                    }
+                    if ( i == 7){
+                        gotoXY(1, 7);
+                        cout << "│ ";
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        cout << "I Sottomarini valgono 3 caselle";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        cout << "        │";
+                    }else{
+                        gotoXY(1, 7);
+                        cout << "│ I Sottomarini valgono 3 caselle        │";
+                    }
+                    if (i == 9){
+                        gotoXY(1 ,9);
+                        cout << "│ ";
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        cout << "IL Cacciatorpediniere vale 2 caselle";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        cout << "   │";
+                    }else{
+                        gotoXY(1 ,9);
+                        cout << "│ IL Cacciatorpediniere vale 2 caselle   │";
+                    }
+                    if (i == 11){
+                        gotoXY(1 ,11);
+                        cout << "│ ";
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        cout << "I Pattugliatori valgono 1 casella";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        cout << "      │";
+                    }else{
+                        gotoXY(1 ,11);
+                        cout << "│ I Pattugliatori valgono 1 casella      │";
+                    }
+                        gotoXY(2 ,13);
+                        cout << "Premere ENTER per andare confermare";
+
+                        gotoXY(2 ,14);
+                        cout << "Premere ESC per tornare indietro";
+
+                    gotoXY(1 ,0);
+                    cout << "┌────────────────────────────────────────┐";
+                    gotoXY(1 ,2);
+                    cout << "│                                        │";
+                    gotoXY(1 ,4);
+                    cout << "│                                        │";
+                    gotoXY(1 ,6);
+                    cout << "│                                        │";
+                    gotoXY(1 ,8);
+                    cout << "│                                        │";
+                    gotoXY(1 ,10);
+                    cout << "│                                        │";
+                    gotoXY(1 ,12);
+                    cout << "└────────────────────────────────────────┘";
+                    if (totcaselle >= 10){
+                        gotoXY(46 ,1);
+                        cout << totcaselle;
+                    }else{
+                        gotoXY(46 ,1);
+                        cout << "  ";
+                        gotoXY(46 ,1);
+                        cout << totcaselle;
+                    }
+                    gotoXY(44 ,3);
+                    cout << "<";
+                    gotoXY(0 ,z);
+                    cout << " ";
+                    gotoXY(0 ,i);
+                    cout << ">";
+                    if(Portaerei >= 10){
+                        gotoXY(46 ,3);
+                        cout << "  ";
+                        gotoXY(45 ,3);
+                        cout << " " << Portaerei << " ";
+                        gotoXY(49 ,3);
+                        cout << ">";
+                    }else{
+                        gotoXY(46 ,3);
+                        cout << " ";
+                        gotoXY(45 ,3);
+                        cout << " " << Portaerei << " " ;
+                        gotoXY(48 ,3);
+                        cout << ">";
+                    }
+                    gotoXY(44 ,5);
+                    cout << "<";
+                    if(Corazzate >= 10){
+                        gotoXY(46 ,5);
+                        cout << "  ";
+                        gotoXY(45 ,5);
+                        cout << " " << Corazzate << " ";
+                        gotoXY(49 ,5);
+                        cout << ">";
+                    }else{
+                        gotoXY(46 ,5);
+                        cout << " ";
+                        gotoXY(45 ,5);
+                        cout << " " << Corazzate << " " ;
+                        gotoXY(48 ,5);
+                        cout << ">";
+                    }
+                    gotoXY(44 ,7);
+                    cout << "<";
+                    if(Sottomarini >= 10){
+                        gotoXY(46 ,7);
+                        cout << "  ";
+                        gotoXY(45 ,7);
+                        cout << " " << Sottomarini << " ";
+                        gotoXY(49 ,7);
+                        cout << ">";
+                    }else{
+                        gotoXY(46 ,7);
+                        cout << " ";
+                        gotoXY(45 ,7);
+                        cout << " " << Sottomarini << " " ;
+                        gotoXY(48 ,7);
+                        cout << ">";
+                    }
+                    gotoXY(44 ,9);
+                    cout << "<";
+                    if(Cacciatorpediniere >= 10){
+                        gotoXY(46 ,9);
+                        cout << "  ";
+                        gotoXY(45 ,9);
+                        cout << " " << Cacciatorpediniere << " ";
+                        gotoXY(49 ,9);
+                        cout << ">";
+                    }else{
+                        gotoXY(46 ,9);
+                        cout << " ";
+                        gotoXY(45 ,9);
+                        cout << " " << Cacciatorpediniere << " " ;
+                        gotoXY(48 ,9);
+                        cout << ">";
+                    }
+                    gotoXY(44 ,11);
+                    cout << "<";
+                    if(Pattugliatori >= 10){
+                        gotoXY(46 ,11);
+                        cout << "  ";
+                        gotoXY(45 ,11);
+                        cout << " " << Pattugliatori << " ";
+                        gotoXY(49 ,11);
+                        cout << ">";
+                    }else{
+                        gotoXY(46 ,11);
+                        cout << "  ";
+                        gotoXY(45 ,11);
+                        cout << " " << Pattugliatori << " " ;
+                        gotoXY(48 ,11);
+                        cout << ">";
+                    }
+                    c = _getch();
+                    if (c == DX && (totcaselle + 5) <= 50 && i == 3 && (Portaerei + 1) >= 10){
+                        Portaerei++;
+                        gotoXY(48 ,3);
+                        cout << " ";
+                        gotoXY(46 ,3);
+                        cout << Portaerei;
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(49 ,3);
+                        cout << ">";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        totcaselle += 5;
+                    }else if (c == DX && (totcaselle + 5) <= 50 && i == 3 && (Portaerei + 1) < 10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(48 ,3);
+                        cout << ">";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        Portaerei++;
+                        totcaselle += 5;
+                    }else if (c == SX && (totcaselle - 5) >= 0 && i == 3 && (Portaerei - 1) >= 0 && (Portaerei - 1) < 10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(44 ,3);
+                        cout << "<";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        gotoXY(49 ,3);
+                        cout << " ";
+                        gotoXY(48 ,3);
+                        cout << ">";
+                        Portaerei--;
+                        totcaselle -= 5;
+                    }else if (c == SX && (totcaselle - 5) >= 0 && i == 3 && (Portaerei - 1) >= 10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(44 ,3);
+                        cout << "<";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        Portaerei--;
+                        totcaselle -= 5;
+                    }
+                    if(c == DX && (totcaselle + 4) <= 50 && i == 5 && (Corazzate + 1) >= 10){
+                        Corazzate++;
+                        gotoXY(48 ,5);
+                        cout << " ";
+                        gotoXY(46 ,5);
+                        cout << Corazzate;
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(49 ,5);
+                        cout << ">";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        totcaselle += 4;
+                    }else if (c == DX && (totcaselle + 4) <= 50 && i == 5 && (Corazzate + 1) < 10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(48 ,5);
+                        cout << ">";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        Corazzate++;
+                        totcaselle += 4;
+                    }else if (c == SX && (totcaselle - 4) >= 0 && i == 5 && (Corazzate - 1) >= 0 && (Corazzate - 1) < 10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(44 ,5);
+                        cout << "<";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        gotoXY(49 ,5);
+                        cout << " ";
+                        gotoXY(48 ,5);
+                        cout << ">";
+                        Corazzate--;
+                        totcaselle -= 4;
+                    }else if (c == SX && (totcaselle - 4) >= 0 && i == 5 && (Corazzate - 1) >= 10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(44 ,5);
+                        cout << "<";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        Corazzate--;
+                        totcaselle -= 4;
+                    }
+                    if(c == DX && (totcaselle + 3) <= 50 && i == 7 && (Sottomarini + 1) >= 10){
+                        Sottomarini++;
+                        gotoXY(48 ,7);
+                        cout << " ";
+                        gotoXY(46 ,7);
+                        cout << Sottomarini;
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(49 ,7);
+                        cout << ">";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        totcaselle += 3;
+                    }else if (c == DX && (totcaselle + 3) <= 50 && i == 7 && (Sottomarini + 1) < 10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(48 ,7);
+                        cout << ">";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        Sottomarini++;
+                        totcaselle += 3;
+                    }else if (c == SX && (totcaselle - 3) >= 0 && i == 7 && (Sottomarini - 1) >= 0 && (Sottomarini - 1) < 10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(44 ,7);
+                        cout << "<";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        gotoXY(49 ,7);
+                        cout << " ";
+                        gotoXY(48 ,7);
+                        cout << ">";
+                        Sottomarini--;
+                        totcaselle -= 3;
+                    }else if (c == SX && (totcaselle - 3) >= 0 && i == 7 && (Sottomarini - 1) >= 0 && (Sottomarini - 1) >= 10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(44 ,7);
+                        cout << "<";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        Sottomarini--;
+                        totcaselle -= 3;
+
+                    }
+                    if(c == DX && (totcaselle + 2) <= 50 && i == 9 && (Cacciatorpediniere + 1) >= 10){
+                        Cacciatorpediniere++;
+                        gotoXY(48 ,9);
+                        cout << " ";
+                        gotoXY(46 ,9);
+                        cout << Cacciatorpediniere;
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(49 ,9);
+                        cout << ">";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        totcaselle += 2;
+                    }else if (c == DX && (totcaselle + 2) <= 50 && i == 9 && (Cacciatorpediniere + 1) < 10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(48 ,9);
+                        cout << ">";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        Cacciatorpediniere++;
+                        totcaselle += 2;
+                    }else if (c == SX && (totcaselle - 2) >= 0 && i == 9 && (Cacciatorpediniere - 1) >= 0 && (Cacciatorpediniere - 1) <10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(44 ,9);
+                        cout << "<";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        gotoXY(49 ,9);
+                        cout << " ";
+                        gotoXY(48 ,9);
+                        cout << ">";
+                        Cacciatorpediniere--;
+                        totcaselle -= 2;
+                    }else if (c == SX && (totcaselle - 2) >= 0 && i == 9 && (Cacciatorpediniere - 1) >=10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(44 ,9);
+                        cout << "<";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        gotoXY(49 ,9);
+                        cout << ">";
+                        Cacciatorpediniere--;
+                        totcaselle -= 2;
+                    }
+                    if(c == DX && (totcaselle + 1) <= 50 && i == 11 && (Pattugliatori + 1) >= 10){
+                        Pattugliatori++;
+                        gotoXY(48 ,11);
+                        cout << " ";
+                        gotoXY(46 ,11);
+                        cout << Pattugliatori;
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(49 ,11);
+                        cout << ">";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        totcaselle += 1;
+                    }else if (c == DX && (totcaselle + 1) <= 50 && i == 11 && (Pattugliatori + 1) < 10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(48 ,11);
+                        cout << ">";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        Pattugliatori++;
+                        totcaselle += 1;
+                    }else if (c == SX && (totcaselle - 1) >= 0 && i == 11 && (Pattugliatori - 1) >= 0 && (Pattugliatori - 1) < 10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(44 ,11);
+                        cout << "<";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        gotoXY(49 ,11);
+                        cout << " ";
+                        gotoXY(48 ,11);
+                        cout << ">";
+                        Pattugliatori--;
+                        totcaselle -= 1;
+                    }else if (c == SX && (totcaselle - 1) >= 0 && i == 11 && (Pattugliatori - 1) >=10){
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(44 ,11);
+                        cout << "<";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        Sleep(500);
+                        Pattugliatori--;
+                        totcaselle -= 1;
+                    }
+                    if (c == ENTER && totcaselle == 50){
+                        clearScreen(MAIN_BG, MAIN_FG);
+                        i = 9;
+                        break;
+                    }else if (c == ENTER && totcaselle !=50){
+                        gotoXY(0 ,14);
+                        cout << R"(
+ ___  _____   _____   ___    _   ___  ___ ___ _   _ _  _  ___ ___ ___ ___
+|   \| __\ \ / /_ _| | _ \  /_\ / __|/ __|_ _| | | | \| |/ __| __| _ \ __|
+| |) | _| \ V / | |  |   / / _ \ (_ | (_ || || |_| | .` | (_ | _||   / _|
+|___/|___| \_/ |___| |_|_\/_/ \_\___|\___|___|\___/|_|\_|\___|___|_|_\___|
+             ___  __       ___   _   ___ ___ _    _    ___
+            | __|/  \     / __| /_\ / __| __| |  | |  | __|
+            |__ \ () |   | (__ / _ \\__ \ _|| |__| |__| _|
+            |___/\__/     \___/_/ \_\___/___|____|____|___|
+)";
+                        Sleep(3000);
+                        gotoXY(0 ,14);
+                        cout << "                                                                           ";
+                        gotoXY(0 ,15);
+                        cout << "                                                                           ";
+                        gotoXY(0 ,16);
+                        cout << "                                                                           ";
+                        gotoXY(0 ,17);
+                        cout << "                                                                           ";
+                        gotoXY(0 ,18);
+                        cout << "                                                                           ";
+                        gotoXY(0 ,19);
+                        cout << "                                                                           ";
+                        gotoXY(0 ,20);
+                        cout << "                                                                           ";
+                        gotoXY(0 ,21);
+                        cout << "                                                                           ";
+                        gotoXY(0 ,22);
+                        cout << "                                                                           ";
+                    }
+                    if (c == ESC){
+                        totcaselle = 50;
+                        Portaerei = PortaereiP;
+                        Corazzate = CorazzateP;
+                        Sottomarini = SottomariniP;
+                        Cacciatorpediniere = CacciatorpediniereP;
+                        Pattugliatori = PattugliatoriP;
+                        clearScreen(MAIN_BG, MAIN_FG);
+                        i = 9;
+                        uscire = true;
                         break;
                     }
-                    else if (totcaselle > 50)
-                    {
-                        system("cls");
-                        cout << "E' stato superato  il limite di caselle (50)" <<endl;
-                        cout << "Riprovare";
-                        Sleep(2000);
-                        goto rinizio;
+                    z = i;
+                    if (i == 3){
+                        maxaltezza = true;
+                    }else if (i == 11){
+                        minaltezza = true;
                     }
-                    cout << "Quanti Corazzate si vuole mettere (sono rimaste " << 50-totcaselle << " caselle)"<<endl;
-                    cin >> Corazzate;
-                    totcaselle += (Corazzate * 4);
-                    if (totcaselle == 50)
-                    {
-                        Sottomarini = 0;
-                        Cacciatorpediniere = 0;
-                        Pattugliatori = 0;
-                        cout << "E' stato raggiunto il massimo di caselle (50)";
-                        Sleep(2000);
-                        system("cls");
-                        break;
-                    }
-                    else if (totcaselle > 50)
-                    {
-                        system("cls");
-                        cout << "E' stato superato  il limite di caselle (50)" <<endl;
-                        cout << "Riprovare";
-                        Sleep(2000);
-                        goto rinizio;
-                    }
-                    cout << "Quanti Sottomarini si vuole mettere (sono rimaste " << 50 - totcaselle << " caselle)"<<endl;
-                    cin >>Sottomarini;
-                    totcaselle += (Sottomarini * 3);
-                    if (totcaselle == 50)
-                    {
-                        Cacciatorpediniere = 0;
-                        Pattugliatori = 0;
-                        cout << "E' stato raggiunto il massimo di caselle (50)";
-                        Sleep(2000);
-                        system("cls");
-                        break;
-                    }
-                    else if (totcaselle > 50)
-                    {
-                        system("cls");
-                        cout << "E' stato superato  il limite di caselle (50)" <<endl;
-                        cout << "Riprovare";
-                        Sleep(2000);
-                        goto rinizio;
-                    }
-                    cout << "Quanti Cacciatorpediniere si vuole mettere (sono rimaste " << 50 - totcaselle << " caselle)"<<endl;
-                    cin >>Cacciatorpediniere;
-                    totcaselle += (Cacciatorpediniere * 2);
-                    if (totcaselle == 50)
-                    {
-                        Pattugliatori = 0;
-                        cout << "E' stato raggiunto il massimo di caselle (50)";
-                        Sleep(2000);
-                        system("cls");
-                        break;
-                    }
-                    else if (totcaselle > 50)
-                    {
-                        system("cls");
-                        cout << "E' stato superato  il limite di caselle (50)" <<endl;
-                        cout << "Riprovare";
-                        Sleep(2000);
-                        goto rinizio;
-                    }
-                    cout << "Quanti Pattugliatori si vuole mettee (sono rimaste " << 50 - totcaselle << " caselle)"<<endl;
-                    cin >>Pattugliatori;
-                    totcaselle += (Pattugliatori * 1);
-                    if (totcaselle == 50)
-                    {
-                        cout << "E' stato raggiunto il massimo di caselle (50)";
-                        Sleep(2000);
-                        system("cls");
-                        break;
-                    }
-                    else if (totcaselle > 50)
-                    {
-                        system("cls");
-                        cout << "E' stato superato  il limite di caselle (50)" <<endl;
-                        cout << "Riprovare";
-                        Sleep(2000);
-                        goto rinizio;
-                    }
-                    if(totcaselle != 50)
-                    {
-                        system ("cls");
-                        cout << "Sono state usate un totale di " << totcaselle << " e rimangono " << 50 - totcaselle << " da usare si prega di usarle tutte" <<endl;
-                        cout << "Riprovare";
-                        Sleep(4000);
-                        goto rinizio;
+                    if (c == SU && !maxaltezza){
+                        i -= 2;
+                        minaltezza = false;
+                    }else if (c == GIU && !minaltezza){
+                        i += 2;
+                        maxaltezza = false;
                     }
                 }
-                break;
             case 10:
-                system ("cls");
+                clearScreen(MAIN_BG, MAIN_FG);
                 esc = true;
                 break;
             }
         }
     }
 }
-
 void Classifica()
 {
 
