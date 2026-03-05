@@ -379,6 +379,7 @@ void Gnavi()
     z = 9;
 
     while(!esc){
+        rinizia:
         gotoXY (0 ,0);
         cout << "┌────────────────────────────────────┐"<<endl;
         gotoXY (0 ,1);
@@ -889,7 +890,7 @@ void Gnavi()
                     if (c == ENTER && totcaselle == 50){
                         clearScreen(MAIN_BG, MAIN_FG);
                         i = 9;
-                        break;
+                        goto rinizia;
                     }else if (c == ENTER && totcaselle !=50){
                         gotoXY(0 ,14);
                         cout << R"(
@@ -931,8 +932,7 @@ void Gnavi()
                         Pattugliatori = PattugliatoriP;
                         clearScreen(MAIN_BG, MAIN_FG);
                         i = 9;
-                        uscire = true;
-                        break;
+                        goto rinizia;
                     }
                     z = i;
                     if (i == 3){
