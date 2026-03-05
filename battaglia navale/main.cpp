@@ -26,7 +26,9 @@ const int qcaselle_navi = 50;
 bool maxaltezza = true;
 bool minaltezza = false;
 bool uscire = false;
-bool scelta;
+bool scelta = true;
+bool winplayer1 = false;
+bool winplayer2 = false;
 
 int c;
 int i = 9;
@@ -37,6 +39,9 @@ int Sottomarini = 4;         //3 caselle di lunghezza  (nella matrice = 3)
 int Cacciatorpediniere = 5;  //2 caselle di lunghezza  (nella matrice = 4)
 int Pattugliatori =  6;      //1 casella di lunghezza  (nella matrice = 5)
 int totcaselle = 50;         //50 caselle di lunghezza
+int puntplayer1 = 0;
+int puntplayer2 = 0;
+int puntbot  = 0;
 
 int mappaP1[10][30];
 int mappaP2[10][30];
@@ -379,7 +384,7 @@ void Gnavi()
     z = 9;
 
     while(!esc){
-        rinizia:
+rinizia:
         gotoXY (0 ,0);
         cout << "┌────────────────────────────────────┐"<<endl;
         gotoXY (0 ,1);
@@ -560,11 +565,11 @@ void Gnavi()
                         gotoXY(1 ,11);
                         cout << "│ I Pattugliatori valgono 1 casella      │";
                     }
-                        gotoXY(2 ,13);
-                        cout << "Premere ENTER per andare confermare";
+                    gotoXY(2 ,13);
+                    cout << "Premere ENTER per andare confermare";
 
-                        gotoXY(2 ,14);
-                        cout << "Premere ESC per tornare indietro";
+                    gotoXY(2 ,14);
+                    cout << "Premere ESC per tornare indietro";
 
                     gotoXY(1 ,0);
                     cout << "┌────────────────────────────────────────┐";
@@ -959,7 +964,59 @@ void Gnavi()
 
 void Classifica()
 {
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    clearScreen(MAIN_BG, MAIN_FG);
+    if(winplayer1 && !scelta){
+        puntplayer1 += 100;
+        puntplayer2 -= 50;
+    }else if(winplayer2 && !scelta){
+        puntplayer2 += 100;
+        puntplayer1 -= 50;
+    }else if (winplayer1 && scelta){
+        puntplayer1 += 100;
+        puntbot -= 50;
+    }else {
+        puntbot += 100;
+        puntplayer1 -= 50;
+    }
+    cout<<R"(
+   _____ _                _____ _____ _____ ______ _____ _____
+  / ____| |        /\    / ____/ ____|_   _|  ____|_   _/ ____|   /\
+ | |    | |       /  \  | (___| (___   | | | |__    | || |       /  \
+ | |    | |      / /\ \  \___ \\___ \  | | |  __|   | || |      / /\ \
+ | |____| |____ / ____ \ ____) |___) |_| |_| |     _| || |____ / ____ \
+  \_____|______/_/    \_\_____/_____/|_____|_|    |_____\_____/_/    \_\
 
+)";
+    cout << "┌────────────────────────────────────────┐"<<endl;
+    cout << "│";
+    if (puntplayer1 > 999 &&puntplayer1 < 9999 ){
+        cout << "Punteggio Player 1: " << puntplayer1 << "                │"<<endl;
+    }else if(puntplayer1 <= 99){
+        cout << "Punteggio Player 1: " << puntplayer1 << "                 │"<<endl;
+    }else{
+        cout << "Punteggio Player 1: " << puntplayer1 << "                  │"<<endl;
+    }
+    cout << "│";
+    if(puntplayer2 > 999 &&puntplayer2 < 9999 ){
+        cout << "Punteggio Player 2: " << puntplayer2 << "                │"<<endl;
+    }else if(puntplayer2 <= 99){
+        cout << "Punteggio Player 2: " << puntplayer2 << "                 │"<<endl;
+    }else{
+        cout << "Punteggio Player 2: " << puntplayer2 << "                 │"<<endl;
+    }
+    cout << "│";
+    if(puntbot > 999 &&puntbot < 9999 ){
+        cout << "Punteggio bot: " << puntbot << "                │"<<endl;
+    }else if(puntbot <= 99){
+        cout << "Punteggio bot: " << puntbot << "                 │"<<endl;
+    }else{
+        cout << "Punteggio bot: " << puntbot << "                 │"<<endl;
+    }
+
+    cout << "└────────────────────────────────────────┘"<<endl;
+    Sleep(10000);
 }
 
 void USCITA ()
