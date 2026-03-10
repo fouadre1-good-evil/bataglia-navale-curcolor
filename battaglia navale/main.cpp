@@ -29,6 +29,7 @@ bool uscire = false;
 bool scelta = true;
 bool winplayer1 = false;
 bool winplayer2 = false;
+bool partitainiziata = false;
 
 int c;
 int i = 9;
@@ -39,6 +40,7 @@ int Sottomarini = 4;         //3 caselle di lunghezza  (nella matrice = 3)
 int Cacciatorpediniere = 5;  //2 caselle di lunghezza  (nella matrice = 4)
 int Pattugliatori =  6;      //1 casella di lunghezza  (nella matrice = 5)
 int totcaselle = 50;         //50 caselle di lunghezza
+
 int puntplayer1 = 0;
 int puntplayer2 = 0;
 int puntbot  = 0;
@@ -183,7 +185,9 @@ void displayMainLayout()
         switch (i)
         {
         case 9:
+            partitainiziata = true;
             INIZIO();
+            partitainiziata = false;
             break;
         case 10:
             Gnavi();
@@ -967,18 +971,30 @@ void Classifica()
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
     clearScreen(MAIN_BG, MAIN_FG);
-    if(winplayer1 && !scelta){
+    puntplayer1 = 5000;
+    puntplayer2 = -5000;
+    puntbot = 5000;
+    if(winplayer1 && !scelta && partitainiziata){
         puntplayer1 += 100;
         puntplayer2 -= 50;
-    }else if(winplayer2 && !scelta){
+    }else if(winplayer2 && !scelta && partitainiziata){
         puntplayer2 += 100;
         puntplayer1 -= 50;
-    }else if (winplayer1 && scelta){
+    }else if (winplayer1 && scelta && partitainiziata){
         puntplayer1 += 100;
         puntbot -= 50;
-    }else {
+    }else if (!winplayer1 && scelta && partitainiziata){
         puntbot += 100;
         puntplayer1 -= 50;
+    }else
+    if (puntbot < 0 ){
+        puntbot = 0;
+    }
+    if (puntplayer1 = 0){
+        puntplayer1 = 0;
+    }
+    if (puntplayer2 = 0){
+        puntplayer2 = 0;
     }
     cout<<R"(
    _____ _                _____ _____ _____ ______ _____ _____
@@ -989,32 +1005,38 @@ void Classifica()
   \_____|______/_/    \_\_____/_____/|_____|_|    |_____\_____/_/    \_\
 
 )";
+
     cout << "┌────────────────────────────────────────┐"<<endl;
     cout << "│";
-    if (puntplayer1 > 999 &&puntplayer1 < 9999 ){
+    if (puntplayer1 > 999 && puntplayer1 < 9999 ){
         cout << "Punteggio Player 1: " << puntplayer1 << "                │"<<endl;
-    }else if(puntplayer1 <= 99){
-        cout << "Punteggio Player 1: " << puntplayer1 << "                 │"<<endl;
-    }else{
+    }else if(puntplayer1 <= 99 && puntplayer1 != 0){
         cout << "Punteggio Player 1: " << puntplayer1 << "                  │"<<endl;
+    }else if(puntplayer1 == 0){
+        cout << "Punteggio player 1: " << puntplayer1 << "                   │"<<endl;
+    }else{
+        cout << "Punteggio Player 1: " << puntplayer1 << "                 │"<<endl;
     }
     cout << "│";
-    if(puntplayer2 > 999 &&puntplayer2 < 9999 ){
+    if(puntplayer2 > 999 && puntplayer2 < 9999 ){
         cout << "Punteggio Player 2: " << puntplayer2 << "                │"<<endl;
-    }else if(puntplayer2 <= 99){
-        cout << "Punteggio Player 2: " << puntplayer2 << "                 │"<<endl;
+    }else if(puntplayer2 <= 99 && puntplayer2 != 0){
+        cout << "Punteggio Player 2: " << puntplayer2 << "                  │"<<endl;
+    }else if(puntplayer2 == 0){
+        cout << "Punteggio player 2: " << puntplayer2 << "                   │"<<endl;
     }else{
         cout << "Punteggio Player 2: " << puntplayer2 << "                 │"<<endl;
     }
     cout << "│";
-    if(puntbot > 999 &&puntbot < 9999 ){
-        cout << "Punteggio bot: " << puntbot << "                │"<<endl;
-    }else if(puntbot <= 99){
-        cout << "Punteggio bot: " << puntbot << "                 │"<<endl;
+    if(puntbot > 999 && puntbot < 9999  ){
+        cout << "Punteggio bot: " << puntbot << "                     │"<<endl;
+    }else if(puntbot <= 99 && puntbot != 0){
+        cout << "Punteggio bot: " << puntbot << "                       │"<<endl;
+    }else if(puntbot == 0){
+        cout << "Punteggio bot: " << puntbot << "                        │"<<endl;
     }else{
-        cout << "Punteggio bot: " << puntbot << "                 │"<<endl;
+        cout << "Punteggio bot: " << puntbot << "                      │"<<endl;
     }
-
     cout << "└────────────────────────────────────────┘"<<endl;
     Sleep(10000);
 }
