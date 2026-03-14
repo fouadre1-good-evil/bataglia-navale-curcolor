@@ -30,17 +30,23 @@ bool scelta = true;
 bool winplayer1 = false;
 bool winplayer2 = false;
 bool partitainiziata = false;
+bool direzione = true;
 
 int c;
 int i = 9;
 int z = 0;
+int x = 4;
+int y = 2;
+int Vx = 4;
+int Vy = 2;
+int Mx = 0;
+int My = 0;
 int Portaerei = 2;           //5 caselle di lunghezza  (nella matrice = 1)
 int Corazzate = 3;           //4 caselle di lunghezza  (nella matrice = 2)
 int Sottomarini = 4;         //3 caselle di lunghezza  (nella matrice = 3)
 int Cacciatorpediniere = 5;  //2 caselle di lunghezza  (nella matrice = 4)
 int Pattugliatori =  6;      //1 casella di lunghezza  (nella matrice = 5)
 int totcaselle = 50;         //50 caselle di lunghezza
-
 int puntplayer1 = 0;
 int puntplayer2 = 0;
 int puntbot  = 0;
@@ -67,6 +73,7 @@ void Gnavi();
 void Classifica();
 void USCITA();
 void hideCursor();
+void Sposizionenavi();
 
 HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -211,11 +218,11 @@ void INIZIO ()
     clearScreen(MAIN_BG, MAIN_FG);
     system("color B0");
     P_PC();
+    Sposizionenavi();
     if (!uscire)
     {
         while (!uscire)
         {
-            stampacaselle();
             if (!scelta)  //2Player
             {
 
@@ -366,6 +373,47 @@ void stampacaselle()
     ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
   J │   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   │
     └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘
+)";
+    cout <<endl;
+}
+
+void stampacaselle_scelta()
+{
+    clearScreen(MAIN_BG, MAIN_FG);
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    cout << R"(
+                                  1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30
+                                ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
+                              A │   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   │
+                                └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘
+                                ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
+                              B │   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   │
+                                └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘
+                                ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
+                              C │   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   │
+                                └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘
+                                ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
+                              D │   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   │
+                                └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘
+                                ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
+                              E │   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   │
+                                └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘
+                                ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
+                              F │   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   │
+                                └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘
+                                ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
+                              G │   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   │
+                                └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘
+                                ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
+                              H │   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   │
+                                └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘
+                                ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
+                              I │   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   │
+                                └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘
+                                ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐
+                              J │   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   ││   │
+                                └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘
 )";
     cout <<endl;
 }
@@ -984,9 +1032,9 @@ void Classifica()
         puntbot += 100;
         puntplayer1 -= 50;
     }else
-    if (puntbot < 0 ){
-        puntbot = 0;
-    }
+        if (puntbot < 0 ){
+            puntbot = 0;
+        }
     if (puntplayer1 = 0){
         puntplayer1 = 0;
     }
@@ -1070,3 +1118,250 @@ void hideCursor()
     cursorInfo.bVisible = FALSE;
     SetConsoleCursorInfo(console, &cursorInfo);
 }
+
+void Sposizionenavi()
+{
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    i = 2;
+    z = 2;
+    maxaltezza = true;
+    minaltezza = false;
+    stampacaselle_scelta();
+    do{
+        gotoXY(1 ,2);
+        if (i == 2){
+            SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            cout << "Portaerei";
+            SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+        }else{
+            cout << "Portaerei";
+        }
+        cout << " (" << Portaerei << " rimaste)";
+        gotoXY(1,5);
+        if ( i == 5)
+        {
+            SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            cout << "Corazzate";
+            SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+        }
+        else
+        {
+            cout << "Corazzate";
+        }
+        cout << " (" << Corazzate << " rimaste) ";
+        gotoXY(1,8);
+        if (i == 8)
+        {
+            SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            cout << "Sottomarini";
+            SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+        }
+        else
+        {
+            cout << "Sottomarini";
+        }
+        cout << " (" << Sottomarini << " rimaste)";
+        gotoXY(1,11);
+        if (i == 11)
+        {
+            SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            cout << "Cacciatorpediniere";
+            SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+        }
+        else
+        {
+            cout << "Cacciatorpediniere";
+        }
+        cout << " (" << Cacciatorpediniere << " rimaste)";
+        gotoXY(1,14);
+        if (i == 14)
+        {
+            SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+            cout << "Pattugliatori";
+            SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+        }
+        else
+        {
+            cout << "Pattugliatori";
+        }
+        cout << " (" << Pattugliatori << " rimaste)";
+        gotoXY(0,z);
+        cout << " ";
+        gotoXY(0,i);
+        cout << ">";
+        z = i;
+        c = _getch();
+        if (i == 2)
+        {
+            maxaltezza = true;
+        }
+        else if (i == 14)
+        {
+            minaltezza = true;
+        }
+        if (c == SU && !maxaltezza)
+        {
+            i -= 3;
+            minaltezza = false;
+        }
+        if (c == GIU && !minaltezza)
+        {
+            i += 3;
+            maxaltezza = false;
+        }
+        if (c == ENTER)
+        {
+            system("cls");
+            stampacaselle();
+            if(i == 2 && Portaerei != 0)
+            {
+                while(Portaerei != 0)
+                {
+                    if(direzione == false){
+                        if (x < 134){
+                        gotoXY(Vx,Vy);
+                        cout << "┌───┐┌───┐┌───┐┌───┐┌───┐";
+                        gotoXY(Vx,Vy + 1);
+                        cout << "│   ││   ││   ││   ││   │";
+                        gotoXY(Vx,Vy + 2);
+                        cout << "└───┘└───┘└───┘└───┘└───┘";
+                        }
+                    }else{
+                        gotoXY(Vx,Vy);
+                        cout << "┌───┐┌───┐┌───┐┌───┐┌───┐";
+                        gotoXY(Vx,Vy + 1);
+                        cout << "│   ││   ││   ││   ││   │";
+                        gotoXY(Vx,Vy + 2);
+                        cout << "└───┘└───┘└───┘└───┘└───┘";
+                        }
+                    if(y <= 17){
+                        for(int k = 0; k < 15; k += 3)
+                        {
+                            gotoXY(Vx,Vy + k);
+                            cout << "┌───┐";
+                            gotoXY(Vx,Vy + 1 + k);
+                            cout << "│   │";
+                            gotoXY(Vx,Vy + 2 + k);
+                            cout << "└───┘";
+                        }
+                    }
+                    gotoXY(0 ,32);
+                    cout << "                                                                                                                                                                                                              ";
+                    gotoXY(0 ,33);
+                    cout << "                                                                                                                                                                                                              ";
+                    gotoXY(0 ,34);
+                    cout << "                                                                                                                                                                                                              ";
+                    for (int j = 0; j < 30 ;j++){
+                        gotoXY(154 ,2 + j);
+                        cout <<"     ";
+                        gotoXY(154 ,3 + j);
+                        cout <<"     ";
+                        gotoXY(154 ,4 + j);
+                        cout <<"     ";
+                    }
+                    if (direzione == true)
+                    {
+                        SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                        gotoXY(x,y);
+                        cout <<"┌───┐┌───┐┌───┐┌───┐┌───┐";
+                        gotoXY(x,y + 1);
+                        cout << "│   ││   ││   ││   ││   │";
+                        gotoXY(x,y + 2);
+                        cout << "└───┘└───┘└───┘└───┘└───┘";
+                        SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                    }
+                    else
+                    {
+                        if (y < 20)
+                        {
+                            for(int k = 0; k < 15; k += 3)
+                            {
+                                SetConsoleTextAttribute(h, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                                gotoXY(x,y + k);
+                                cout << "┌───┐";
+                                gotoXY(x,y + 1 + k);
+                                cout << "│   │";
+                                gotoXY(x,y + 2 + k);
+                                cout << "└───┘";
+                                SetConsoleTextAttribute(h, BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+                            }
+                        }
+                    }
+                    Vx = x;
+                    Vy = y;
+                    c = _getch();
+                    if (direzione)
+                    {
+                        if (c == DX && x != 129)
+                        {
+                            x += 5;
+                        }
+                        if (c == SX && x != 4)
+                        {
+                            x -= 5;
+                        }
+                        if (c == SU && y != 2)
+                        {
+                            y -= 3;
+                        }
+                        if (c == GIU && y != 29)
+                        {
+                            y += 3;
+                        }
+                    }
+                    else
+                    {
+                        if (c == DX && x != 149)
+                        {
+                            x += 5;
+                            Mx += 1;
+                        }
+                        if (c == SX && x != 4)
+                        {
+                            x -= 5;
+                            Mx -= 1;
+                        }
+                        if (c == SU && y != 2)
+                        {
+                            y -= 3;
+                            My -= 1;
+                        }
+                        if (c == GIU && y != 17)
+                        {
+                            y += 3;
+                            My += 1;
+                        }
+                    }
+
+                    if (c == BACKSPACE && direzione == true && y < 20)
+                    {
+                        direzione = false;
+                    }
+                    else if (c == BACKSPACE && direzione == false && x < 134)
+                    {
+                        direzione = true;
+                    }
+                    if (c == ENTER){
+                        y += 1;
+                        y /= 3;
+                        x += 1;
+                        x /= 5;
+                        Portaerei--;
+                        if (direzione == true){
+                            for(int k = 0;k < 5;k++){
+                                mappaP1[y][x + k];
+                            }
+                        }else{
+                            for(int k = 0;k < 5;k++){
+                                mappaP1[y + k][x];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    while(c != ESC);
+}
+
