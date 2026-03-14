@@ -971,9 +971,6 @@ void Classifica()
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
     clearScreen(MAIN_BG, MAIN_FG);
-    puntplayer1 = 5000;
-    puntplayer2 = -5000;
-    puntbot = 5000;
     if(winplayer1 && !scelta && partitainiziata){
         puntplayer1 += 100;
         puntplayer2 -= 50;

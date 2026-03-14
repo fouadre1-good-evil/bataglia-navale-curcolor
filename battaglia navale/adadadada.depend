@@ -69,7 +69,7 @@
 	<iomanip>
 	<string.h>
 
-1773136767 source:c:\users\utente\documents\bataglia-navale-curcolor\battaglia navale\main.cpp
+1773483498 source:c:\users\utente\documents\bataglia-navale-curcolor\battaglia navale\main.cpp
 	<iostream>
 	<conio.h>
 	"curcolor.h"
@@ -78,7 +78,7 @@
 	<io.h>
 	<fcntl.h>
 
-1773134608 c:\users\utente\documents\bataglia-navale-curcolor\battaglia navale\curcolor.h
+1773481094 c:\users\utente\documents\bataglia-navale-curcolor\battaglia navale\curcolor.h
 	<iostream>
 	<windows.h>
 	<time.h>
