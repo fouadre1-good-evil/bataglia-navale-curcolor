@@ -1053,36 +1053,152 @@ void Classifica()
 
     cout << "┌────────────────────────────────────────┐"<<endl;
     cout << "│";
-    if (puntplayer1 > 999 && puntplayer1 < 9999 ){
-        cout << "Punteggio Player 1: " << puntplayer1 << "                │"<<endl;
-    }else if(puntplayer1 <= 99 && puntplayer1 != 0){
-        cout << "Punteggio Player 1: " << puntplayer1 << "                  │"<<endl;
-    }else if(puntplayer1 == 0){
-        cout << "Punteggio player 1: " << puntplayer1 << "                   │"<<endl;
+    puntplayer1 = 170;
+    puntplayer2 = 150;
+    puntbot = 155;
+    if (puntplayer1 > puntplayer2){
+        if (puntplayer1 > puntbot){
+
+            if (puntplayer1 > 999 && puntplayer1 < 9999 ){
+                cout << "Punteggio Player 1: " << puntplayer1 << "                │"<<endl;
+            }else if(puntplayer1 <= 99 && puntplayer1 != 0){
+                cout << "Punteggio Player 1: " << puntplayer1 << "                  │"<<endl;
+            }else if(puntplayer1 == 0){
+                cout << "Punteggio player 1: " << puntplayer1 << "                   │"<<endl;
+            }else{
+                cout << "Punteggio Player 1: " << puntplayer1 << "                 │"<<endl;
+            }
+            if (puntplayer2 > puntbot){
+                if(puntplayer2 > 999 && puntplayer2 < 9999 ){
+                    cout << "Punteggio Player 2: " << puntplayer2 << "                │"<<endl;
+                }else if(puntplayer2 <= 99 && puntplayer2 != 0){
+                    cout << "Punteggio Player 2: " << puntplayer2 << "                  │"<<endl;
+                }else if(puntplayer2 == 0){
+                    cout << "Punteggio player 2: " << puntplayer2 << "                   │"<<endl;
+                }else{
+                    cout << "Punteggio Player 2: " << puntplayer2 << "                 │"<<endl;
+                }
+                cout << "│";
+                if(puntbot > 999 && puntbot < 9999  ){
+                    cout << "Punteggio bot: " << puntbot << "                     │"<<endl;
+                }else if(puntbot <= 99 && puntbot != 0){
+                    cout << "Punteggio bot: " << puntbot << "                       │"<<endl;
+                }else if(puntbot == 0){
+                    cout << "Punteggio bot: " << puntbot << "                        │"<<endl;
+                }else{
+                    cout << "Punteggio bot: " << puntbot << "                      │"<<endl;
+                }
+                cout << "└────────────────────────────────────────┘"<<endl;
+            }else{
+
+                if(puntbot > 999 && puntbot < 9999  ){
+                    cout << "Punteggio bot: " << puntbot << "                     │"<<endl;
+                }else if(puntbot <= 99 && puntbot != 0){
+                    cout << "Punteggio bot: " << puntbot << "                       │"<<endl;
+                }else if(puntbot == 0){
+                    cout << "Punteggio bot: " << puntbot << "                        │"<<endl;
+                }else{
+                    cout << "Punteggio bot: " << puntbot << "                      │"<<endl;
+                }
+                    cout << "│";
+                    if(puntplayer2 > 999 && puntplayer2 < 9999 ){
+                        cout << "Punteggio Player 2: " << puntplayer2 << "                │"<<endl;
+                    }else if(puntplayer2 <= 99 && puntplayer2 != 0){
+                        cout << "Punteggio Player 2: " << puntplayer2 << "                  │"<<endl;
+                    }else if(puntplayer2 == 0){
+                        cout << "Punteggio player 2: " << puntplayer2 << "                   │"<<endl;
+                    }else{
+                        cout << "Punteggio Player 2: " << puntplayer2 << "                 │"<<endl;
+                    }
+                    cout << "└────────────────────────────────────────┘"<<endl;
+                }
+            }
+    }else if (puntplayer2 > puntbot){
+        if(puntplayer2 > 999 && puntplayer2 < 9999 ){
+            cout << "Punteggio Player 2: " << puntplayer2 << "                │"<<endl;
+        }else if(puntplayer2 <= 99 && puntplayer2 != 0){
+            cout << "Punteggio Player 2: " << puntplayer2 << "                  │"<<endl;
+        }else if(puntplayer2 == 0){
+            cout << "Punteggio player 2: " << puntplayer2 << "                   │"<<endl;
+        }else{
+            cout << "Punteggio Player 2: " << puntplayer2 << "                 │"<<endl;
+        }
+        if (puntplayer1 > puntbot){
+            if (puntplayer1 > 999 && puntplayer1 < 9999 ){
+                cout << "Punteggio Player 1: " << puntplayer1 << "                │"<<endl;
+            }else if(puntplayer1 <= 99 && puntplayer1 != 0){
+                cout << "Punteggio Player 1: " << puntplayer1 << "                  │"<<endl;
+            }else if(puntplayer1 == 0){
+                cout << "Punteggio player 1: " << puntplayer1 << "                   │"<<endl;
+            }else{
+                cout << "Punteggio Player 1: " << puntplayer1 << "                 │"<<endl;
+            }
+            cout << "│";
+            if(puntbot > 999 && puntbot < 9999  ){
+                cout << "Punteggio bot: " << puntbot << "                     │"<<endl;
+            }else if(puntbot <= 99 && puntbot != 0){
+                cout << "Punteggio bot: " << puntbot << "                       │"<<endl;
+            }else if(puntbot == 0){
+                cout << "Punteggio bot: " << puntbot << "                        │"<<endl;
+            }else{
+                cout << "Punteggio bot: " << puntbot << "                      │"<<endl;
+            }
+            cout << "└────────────────────────────────────────┘"<<endl;
+        }else{
+            if(puntbot > 999 && puntbot < 9999  ){
+                cout << "Punteggio bot: " << puntbot << "                     │"<<endl;
+            }else if(puntbot <= 99 && puntbot != 0){
+                cout << "Punteggio bot: " << puntbot << "                       │"<<endl;
+            }else if(puntbot == 0){
+                cout << "Punteggio bot: " << puntbot << "                        │"<<endl;
+            }else{
+                cout << "Punteggio bot: " << puntbot << "                      │"<<endl;
+            }
+            cout << "│";
+            if (puntplayer1 > 999 && puntplayer1 < 9999 ){
+                cout << "Punteggio Player 1: " << puntplayer1 << "                │"<<endl;
+            }else if(puntplayer1 <= 99 && puntplayer1 != 0){
+                cout << "Punteggio Player 1: " << puntplayer1 << "                  │"<<endl;
+            }else if(puntplayer1 == 0){
+                cout << "Punteggio player 1: " << puntplayer1 << "                   │"<<endl;
+            }else{
+                cout << "Punteggio Player 1: " << puntplayer1 << "                 │"<<endl;
+            }
+            cout << "└────────────────────────────────────────┘"<<endl;
+        }
     }else{
-        cout << "Punteggio Player 1: " << puntplayer1 << "                 │"<<endl;
+        cout << "│";
+        if(puntbot > 999 && puntbot < 9999  ){
+            cout << "Punteggio bot: " << puntbot << "                     │"<<endl;
+        }else if(puntbot <= 99 && puntbot != 0){
+            cout << "Punteggio bot: " << puntbot << "                       │"<<endl;
+        }else if(puntbot == 0){
+            cout << "Punteggio bot: " << puntbot << "                        │"<<endl;
+        }else{
+            cout << "Punteggio bot: " << puntbot << "                      │"<<endl;
+        }
+        cout << "│";
+        if(puntplayer2 > 999 && puntplayer2 < 9999 ){
+            cout << "Punteggio Player 2: " << puntplayer2 << "                │"<<endl;
+        }else if(puntplayer2 <= 99 && puntplayer2 != 0){
+            cout << "Punteggio Player 2: " << puntplayer2 << "                  │"<<endl;
+        }else if(puntplayer2 == 0){
+            cout << "Punteggio player 2: " << puntplayer2 << "                   │"<<endl;
+        }else{
+            cout << "Punteggio Player 2: " << puntplayer2 << "                 │"<<endl;
+        }
+        cout << "│";
+        if (puntplayer1 > 999 && puntplayer1 < 9999 ){
+            cout << "Punteggio Player 1: " << puntplayer1 << "                │"<<endl;
+        }else if(puntplayer1 <= 99 && puntplayer1 != 0){
+            cout << "Punteggio Player 1: " << puntplayer1 << "                  │"<<endl;
+        }else if(puntplayer1 == 0){
+            cout << "Punteggio player 1: " << puntplayer1 << "                   │"<<endl;
+        }else{
+            cout << "Punteggio Player 1: " << puntplayer1 << "                 │"<<endl;
+        }
+        cout << "└────────────────────────────────────────┘"<<endl;
     }
-    cout << "│";
-    if(puntplayer2 > 999 && puntplayer2 < 9999 ){
-        cout << "Punteggio Player 2: " << puntplayer2 << "                │"<<endl;
-    }else if(puntplayer2 <= 99 && puntplayer2 != 0){
-        cout << "Punteggio Player 2: " << puntplayer2 << "                  │"<<endl;
-    }else if(puntplayer2 == 0){
-        cout << "Punteggio player 2: " << puntplayer2 << "                   │"<<endl;
-    }else{
-        cout << "Punteggio Player 2: " << puntplayer2 << "                 │"<<endl;
-    }
-    cout << "│";
-    if(puntbot > 999 && puntbot < 9999  ){
-        cout << "Punteggio bot: " << puntbot << "                     │"<<endl;
-    }else if(puntbot <= 99 && puntbot != 0){
-        cout << "Punteggio bot: " << puntbot << "                       │"<<endl;
-    }else if(puntbot == 0){
-        cout << "Punteggio bot: " << puntbot << "                        │"<<endl;
-    }else{
-        cout << "Punteggio bot: " << puntbot << "                      │"<<endl;
-    }
-    cout << "└────────────────────────────────────────┘"<<endl;
     Sleep(10000);
 }
 
@@ -1218,24 +1334,29 @@ void Sposizionenavi()
             {
                 while(Portaerei != 0)
                 {
-                    if(direzione == false){
-                        if (x < 134){
+                    if(direzione == false)
+                    {
+                        if (x < 134)
+                        {
+                            gotoXY(Vx,Vy);
+                            cout << "┌───┐┌───┐┌───┐┌───┐┌───┐";
+                            gotoXY(Vx,Vy + 1);
+                            cout << "│   ││   ││   ││   ││   │";
+                            gotoXY(Vx,Vy + 2);
+                            cout << "└───┘└───┘└───┘└───┘└───┘";
+                        }
+                    }
+                    else
+                    {
                         gotoXY(Vx,Vy);
                         cout << "┌───┐┌───┐┌───┐┌───┐┌───┐";
                         gotoXY(Vx,Vy + 1);
                         cout << "│   ││   ││   ││   ││   │";
                         gotoXY(Vx,Vy + 2);
                         cout << "└───┘└───┘└───┘└───┘└───┘";
-                        }
-                    }else{
-                        gotoXY(Vx,Vy);
-                        cout << "┌───┐┌───┐┌───┐┌───┐┌───┐";
-                        gotoXY(Vx,Vy + 1);
-                        cout << "│   ││   ││   ││   ││   │";
-                        gotoXY(Vx,Vy + 2);
-                        cout << "└───┘└───┘└───┘└───┘└───┘";
-                        }
-                    if(y <= 17){
+                    }
+                    if(y <= 17)
+                    {
                         for(int k = 0; k < 15; k += 3)
                         {
                             gotoXY(Vx,Vy + k);
@@ -1246,18 +1367,19 @@ void Sposizionenavi()
                             cout << "└───┘";
                         }
                     }
-                    gotoXY(0 ,32);
+                    gotoXY(0,32);
                     cout << "                                                                                                                                                                                                              ";
-                    gotoXY(0 ,33);
+                    gotoXY(0,33);
                     cout << "                                                                                                                                                                                                              ";
-                    gotoXY(0 ,34);
+                    gotoXY(0,34);
                     cout << "                                                                                                                                                                                                              ";
-                    for (int j = 0; j < 30 ;j++){
-                        gotoXY(154 ,2 + j);
+                    for (int j = 0; j < 30 ; j++)
+                    {
+                        gotoXY(154,2 + j);
                         cout <<"     ";
-                        gotoXY(154 ,3 + j);
+                        gotoXY(154,3 + j);
                         cout <<"     ";
-                        gotoXY(154 ,4 + j);
+                        gotoXY(154,4 + j);
                         cout <<"     ";
                     }
                     if (direzione == true)
@@ -1342,18 +1464,24 @@ void Sposizionenavi()
                     {
                         direzione = true;
                     }
-                    if (c == ENTER){
+                    if (c == ENTER)
+                    {
                         y += 1;
                         y /= 3;
                         x += 1;
                         x /= 5;
                         Portaerei--;
-                        if (direzione == true){
-                            for(int k = 0;k < 5;k++){
+                        if (direzione == true)
+                        {
+                            for(int k = 0; k < 5; k++)
+                            {
                                 mappaP1[y][x + k];
                             }
-                        }else{
-                            for(int k = 0;k < 5;k++){
+                        }
+                        else
+                        {
+                            for(int k = 0; k < 5; k++)
+                            {
                                 mappaP1[y + k][x];
                             }
                         }
