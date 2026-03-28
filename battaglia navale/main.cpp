@@ -57,6 +57,7 @@ struct giocatore
 {
     char nome [20];
     int punti;
+    int tempo;
 };
 
 struct bot
@@ -1461,6 +1462,21 @@ rinizia:
 
 void Classifica()
 {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Sleep(10000);
 }
 
@@ -1497,3 +1513,26 @@ void hideCursor()
     SetConsoleCursorInfo(console, &cursorInfo);
 }
 
+void bubbleSort(){
+    bool siScambi;
+    int z;
+    int z1;
+    char z2 [20];
+    while(siScambi){
+        siScambi = false;
+        for (int i = 0; i < 98 ; i++){
+            if(giocatori[i].punti > giocatori[i+1].punti && giocatori[i].tempo > giocatori[i+1].tempo){
+            z = giocatori[i].punti;
+            z1 = giocatori[i].tempo;
+            strcpy(z2,giocatori[i].nome);
+            giocatori[i].punti = giocatori[i+1].punti;
+            giocatori[i].tempo = giocatori[i+1].tempo;
+            strcpy(giocatori[i].nome,giocatori[i+1].nome);
+            giocatori[i+1].punti = z;
+            giocatori[i+1].tempo = z1;
+            strcpy(giocatori[i+1].nome,z2);
+            siScambi = true;
+            }
+        }
+    }
+}
