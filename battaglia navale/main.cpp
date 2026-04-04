@@ -3561,6 +3561,7 @@ void P_PC ()
 
 void stampacaselle(int partita)
 {
+    system("cls");
     setColor(MAIN_BG, MAIN_FG);
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
